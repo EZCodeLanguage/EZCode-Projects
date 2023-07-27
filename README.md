@@ -25,7 +25,7 @@ In just a few lines of code, you can wait for the user to input their name, and 
 
 Get started with EzCode and let your creativity soar!
 
-# Syntax
+# Basic Syntax
 | Keyword               | Syntax                                  | Example                                  |
 |-----------------------|-----------------------------------------|------------------------------------------|
 | Await                 | await miliseconds                       | await 1000                               |
