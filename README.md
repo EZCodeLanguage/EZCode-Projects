@@ -27,6 +27,6 @@ Get started with EzCode and let your creativity soar!
 
 For more information, tutorials, and downloads, visit the following links:
 
-- **Website**: [jbros-development.web.app](https://jbros-development.web.app)
-- **Website**: [ez-code.web.app](https://ez-code.web.app)
-- **Website**: [github.com/JBrosDevelopment/ezcode](https://github.com/JBrosDevelopment/ezcode)
+- [jbros-development.web.app](https://jbros-development.web.app)
+- [ez-code.web.app](https://ez-code.web.app)
+- [github.com/JBrosDevelopment/ezcode](https://github.com/JBrosDevelopment/ezcode)
