@@ -19,7 +19,8 @@ Here's a simple example to demonstrate the intuitive syntax of EzCode:
 var input ConsoleInput
 var text Hello,\_
 text + input
-print text```
+print text
+```
 In just a few lines of code, you can wait for the user to input their name, and then greet them with it. EzCode's straightforward syntax allows you to express your ideas concisely and effectively.
 
 Get started with EzCode and let your creativity soar!
