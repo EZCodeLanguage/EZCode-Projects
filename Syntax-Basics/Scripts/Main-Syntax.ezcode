@@ -1,0 +1,25 @@
+//|--------------------------------------------------------------------------------------------------------------------|
+//| Syntax                                                                                                             |
+//|--------------------------------------------------------------------------------------------------------------------|
+//|            Keyword            |                 Syntax                  |                 Example                  |
+//|--------------------------------------------------------------------------------------------------------------------|
+//| Await                         | await miliseconds                       | await 1000                               |
+//| Button                        | button name text                        | button btn Press\_Me                     |
+//| Button Click                  | buttonClick btnName fileLocation        | button btn ~\btn_Click.ezcode            |
+//| Color                         | color controlName r g b                 | color object1 210 210 210                |
+//| Comments                      | // comments                             | // this code will not run                |
+//| Clear Console                 | ClearConsole                            | ClearConsole                             |
+//| Creating Errors               | # create error                          | # create error                           |
+//| Suppress Errors               | # suppress error                        | # suppress error                         |
+//| End Build                     | endBuild                                | endBuild                                 |
+//| Font                          | font controlName weight size            | font label_1 Bold 14                     |
+//| Create Group                  | group new name                          | group new groupName                      |
+//| Add to Group                  | group name add controlType controlName  | group name add Button btn                |
+//| Modify Group                  | group name change type modifier v1 v2 v3| group name change rel move 20 20         |
+//| If Statements                 | if value1 mid value2 :                  | if 10 > 9 : print code                   |
+//| Image                         | image objectName PathToFile             | image obj ~/image.png                    |
+//| Label                         | label labelName                         | label label1                             |
+//| New List                      | list new name : v1,v2,v3                | list new even_numbers : 2,4,6,8,10       |
+//| Add to List                   | list add name val                       | list add even__numbers 12                |
+//| Modify List Value             | list equals name index val              | list equals even__numbers 3 9            |
+//| Clear List                    | list clear name                         | list clear even__numbers                 |
