@@ -19,13 +19,14 @@ Here's a simple example to demonstrate the intuitive syntax of EzCode:
 var input ConsoleInput
 var text Hello,\_
 text + input
-print text```
+print text
+```
 In just a few lines of code, you can wait for the user to input their name, and then greet them with it. EzCode's straightforward syntax allows you to express your ideas concisely and effectively.
 
 Get started with EzCode and let your creativity soar!
 
 For more information, tutorials, and downloads, visit the following links:
 
-- [https://jbros-development.web.app] jbros-development.web.app
-- [https://ez-code.web.app] ez-code.web.app
-- [https://github.com/JBrosDevelopment/ezcode] github.com/JBrosDevelopment/ezcode
+- [jbros-development.web.app](https://jbros-development.web.app)
+- [ez-code.web.app](https://ez-code.web.app)
+- [github.com/JBrosDevelopment/ezcode](https://github.com/JBrosDevelopment/ezcode)
