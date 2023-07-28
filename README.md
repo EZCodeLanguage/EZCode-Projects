@@ -33,7 +33,7 @@ Get started with EzCode and let your creativity soar!
 | Await                 | await miliseconds                       | await 1000                               |
 | Button                | button name text                        | button btn Press\_Me                     |
 | Button Click          | buttonClick btnName fileLocation        | button btn ~\btn_Click.ezcode            |
-| Color                 | color controlName r g b                 | color object1 210 210 210                |
+| Color                 | color controlName r g b                 | color obj 210 210 210                    |
 | Comments              | // comments                             | // this code will not run                |
 | Clear Console         | ClearConsole                            | ClearConsole                             |
 | Creating Errors       | # create error                          | # create error                           |
@@ -45,27 +45,27 @@ Get started with EzCode and let your creativity soar!
 | Modify Group          | group name change type modifier v1 v2 v3| group name change rel move 20 20         |
 | If Statements         | if value1 mid value2 :                  | if 10 > 9 : print code                   |
 | Image                 | image objectName PathToFile             | image obj ~/image.png                    |
-| Label                 | label labelName                         | label label1                             |
+| Label                 | label labelName                         | label lab                                |
 | New List              | list new name : v1,v2,v3                | list new even_numbers : 2,4,6,8,10       |
 | Add to List           | list add name val                       | list add even__numbers 12                |
 | Modify List Value     | list equals name index val              | list equals even__numbers 3 9            |
 | Clear List            | list clear name                         | list clear even__numbers                 |
 | Loop                  | loop loopTimes (ON DIFFERENT LINE): end | loop 10  (NextLine): end                 |
-| Move                  | move ControlName x y                    | move obj1 10 10                          |
+| Move                  | move ControlName x y                    | move obj 10 10                           |
 | Multi-Line            | multiLine textboxName value             | multiLine tb1 true                       |
-| Object                | object name sides                       | object obj1 4                            |
+| Object                | object name sides                       | object obj 4                             |
 | playFile              | playFile modifier PathToFile            | playFile await ~/file.ezcode             |
 | Print                 | print text                              | print hello world                        |
-| Scale                 | scale controlName x y                   | scale button1 15 20                      |
+| Scale                 | scale controlName x y                   | scale btn 15 20                          |
 | Play Sound            | sound sound play PathToFile             | sound play ~/sound.mp3                   |
 | Stop Sound            | sound stop                              | sound stop                               |
 | Sound Volume          | sound volume value                      | sound volume 0.8                         |
-| Textbox               | textbox name                            | textbox tb1                              |
-| Declare Varibles      | var name value                          | var variable1 10                         |
-| Set Variable          | varName mid value                       | variable1 + 25                           |
-| Variable Value        | varName modifier                        | variable1 KeyInput                       |
-| Write                 | write controlName text                  | write label1 hello world!                |
-| WriteToFile           | writeToFile value PathToFile            | writeToFile variable1 ~/file.txt         |
+| Textbox               | textbox name                            | textbox tbx                              |
+| Declare Varibles      | var name value                          | var variable 10                          |
+| Set Variable          | varName mid value                       | variable + 25                            |
+| Variable Value        | varName modifier                        | variable KeyInput                        |
+| Write                 | write controlName text                  | write lab hello world!                   |
+| WriteToFile           | writeToFile value PathToFile            | writeToFile variable ~/file.txt          |
 
 For more information, tutorials, and downloads, visit the following links:
 
