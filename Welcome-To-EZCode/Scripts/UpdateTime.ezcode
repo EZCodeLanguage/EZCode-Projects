@@ -1,0 +1,6 @@
+tc_now + 1
+if tc_now > time_correct : 
+    tc_now = 0
+    Time - 1
+    write Timer Time
+endIf

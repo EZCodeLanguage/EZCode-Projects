@@ -23,3 +23,20 @@
 //|----------------------------------------------------------------------------|
 //|label:timer:x                                                               |
 //|----------------------------------------------------------------------------|
+
+// Title
+label Title Welcome\_to\_EZCode 105 25 50 50 150
+font Title bold 24
+
+// D1
+label D1 \! 75 90 50 50 75
+font D1 bold 12
+write D1 New to EZCode? Want to learn the correct file \nstructure? Your in the right place! Learn more  \nabout EZCode and look through this repository.\nYou will notice the syntax files in each folder.  \nThose can help you if your having troule.
+
+// D2
+label D2 \! 75 205 50 50 75
+font D2 bold 12
+write D2 If you want to create a new EZCode project,     \nthis is a great repository to clone. When you     \nfinish your project, add it to the GitHub          \nrepository for others to see!
+
+// Timer
+label Timer Time

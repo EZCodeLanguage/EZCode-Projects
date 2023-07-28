@@ -27,3 +27,6 @@
 //|----------------------------------------------------------------------------------------|
 //|even_numbers:3                                                                          |
 //|----------------------------------------------------------------------------------------|
+
+// Text
+list new Text : Hello, World, People, Tacos, Orange, Fly, Rich, Equator, EZCode!, Ice-Cream, Wild, Fire, AI, Yum, Awesome, Hurray!, Yep

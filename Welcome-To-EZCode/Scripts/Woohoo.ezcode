@@ -1,0 +1,10 @@
+var sound_random Random 50 100
+sound_random / 100
+sound volume sound_random
+sound play ~/Assets/woohoo.mp3
+
+Presses + 1
+if Presses > Max_Presses :
+    playFile now ~/Scripts/ColorChange.ezcode
+    Presses = 0
+endIf

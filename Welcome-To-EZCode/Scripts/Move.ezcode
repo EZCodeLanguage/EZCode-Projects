@@ -1,0 +1,43 @@
+key Key
+
+var x_pos 0
+var y_pos 0
+var max_pos 75
+var min_pos -25
+var move_speed 5
+
+//Move Up
+if key = W :  
+    y_pos - move_speed
+endIf
+//Move Down
+if key = S : 
+    y_pos + move_speed
+endIf
+//Move Left
+if key = A : 
+    x_pos - move_speed
+endIf
+//Move Right
+if key = D : 
+    x_pos + move_speed
+endIf
+
+//Collision Up
+if (object:BG:y - 25) < min_pos :  
+    y_pos + move_speed
+endIf
+//Collision Down
+if (object:BG:y - 25) > max_pos : 
+    y_pos - move_speed
+endIf
+//Collision Left
+if (object:BG:x - 45) < min_pos : 
+    x_pos + move_speed
+endIf
+//Collision Right
+if (object:BG:x - 45) > max_pos : 
+    x_pos - move_speed
+endIf
+
+group Group change rel move x_pos y_pos

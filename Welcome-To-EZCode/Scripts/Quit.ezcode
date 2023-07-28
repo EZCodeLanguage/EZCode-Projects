@@ -1,0 +1,6 @@
+sound volume 1
+sound play ~/Assets/oof.mp3
+await 10
+group Group change abs move -1000 -1000
+await 100
+endBuild

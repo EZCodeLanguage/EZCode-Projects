@@ -57,7 +57,7 @@ Get started with EzCode and let your creativity soar!
 | playFile              | playFile modifier PathToFile            | playFile await ~/file.ezcode             |
 | Print                 | print text                              | print hello world                        |
 | Scale                 | scale controlName x y                   | scale btn 15 20                          |
-| Play Sound            | sound sound play PathToFile             | sound play ~/sound.mp3                   |
+| Play Sound            | sound play PathToFile                   | sound play ~/sound.mp3                   |
 | Stop Sound            | sound stop                              | sound stop                               |
 | Sound Volume          | sound volume value                      | sound volume 0.8                         |
 | Textbox               | textbox name                            | textbox tbx                              |
