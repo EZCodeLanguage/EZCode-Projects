@@ -1,5 +1,7 @@
 # EZCode Projects
 A collection of EZCode projects for anyone to use and add on to.
+## Get Visual Studio Code Extension
+Get our vs code syntax highlighting extension for EZCode here, [github.com/JBrosDevelopment/ezcode-vscode-extension.git](https://github.com/JBrosDevelopment/ezcode-vscode-extension.git).
 ## New to EZCode?
 Welcome to the world of EzCode, a powerful and user-friendly programming language designed for both beginners and experienced developers. EzCode simplifies the process of writing and executing code, allowing you to focus on your ideas and turn them into reality.
 
