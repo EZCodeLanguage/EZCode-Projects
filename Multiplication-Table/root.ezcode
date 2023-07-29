@@ -1,0 +1,25 @@
+printRaw Welcome to the Multiplication Table Generator!
+printRaw Please enter a number to generate its multiplication table:
+var number ConsoleInput
+var r_n number
+
+var text Multiplication\_Table\_for\_
+text + number
+text + :
+print text
+
+var multiplier 1
+var result number
+
+loop 10
+number = r_n
+result = number 
+
+result * multiplier
+print number * multiplier = result
+
+multiplier + 1
+
+end
+
+printRaw Thank you for using the Multiplication Table Generator!      
