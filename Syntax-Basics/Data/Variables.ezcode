@@ -14,7 +14,7 @@
 //| ConsoleInput             | ConsoleInput                  | Await's for the user to send input in the console            |
 //| Random                   | Random min max                | Generates a value between the 2 values.                      |
 //| Key                      | Key                           | Sets the value to the current key being pressed              |
-//| StickKey                 | StickyKey                     | Sets the value to the las key that was pressed               |
+//| StickyKey                | StickyKey                     | Sets the value to the las key that was pressed               |
 //| AwaitKeyInput            | AwaitKeyInput                 | Awaits for the user to press a key, and sets the value to it |
 //| ReadFile                 | ReadFile PathToFile           | Sets the variable to the contents of the specified file      |
 //| FromList                 | FromList listName index       | This will get the value from an index of a list              |
