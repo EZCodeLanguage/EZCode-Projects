@@ -1,7 +1,0 @@
-sound play ~/Assets/woohoo.mp3
-
-Presses + 1
-if Presses > Max_Presses :
-    playFile now ~/Scripts/ColorChange.ezcode
-    Presses = 0
-endIf

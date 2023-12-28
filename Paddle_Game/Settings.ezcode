@@ -1,0 +1,129 @@
+method ShowSettings
+    // Back Panel
+    global shape Panel x:(width / 2 - 400), y:(height / 2 - 450), w:800, h:900, bg:[20;20;40]
+    main display Panel
+    
+    // SettingsLabel
+    global label SettingsLabel x:(width / 2 - 400), y:(height / 2 - 425), w:800, h:200, bg:[20;20;40], fc:[220;220;220], -> 
+        font:[Impact;65;Regular], align:middlecenter, text:Settings, auto:false
+    main display SettingsLabel
+    
+    // Back
+    global button Back text:Back, w:500, h:100, x:(width / 2 - 250), y:(height / 2 + 275), bg:[20;50;100], fc:[220;220;220], font:[Impact;25;Bold]
+    event Back click HideSettings
+    main display Back
+    
+    // PlayerSpeedLabel
+    global label PlayerSpeedLabel t:Player Speed, auto:false, align:middleleft, h:50, w:300, x:(width / 2 - 350), y:(height / 2 - 200), ->
+        bg:[20;20;40], fc:[220;220;220], font:[Impact;25;Regular]
+    main display PlayerSpeedLabel
+    
+    // PlayerSpeedTB
+    global textbox PlayerSpeedTB t:'player_speed', auto:false, h:50, w:300, x:(width / 2 + 50), y:(height / 2 - 200), ->
+        bg:[220;220;220], fc:[40;40;80], font:[Impact;25;Regular]
+    event PlayerSpeedTB text SettingsChanged
+    main display PlayerSpeedTB
+    
+    // BallSpeedLabel
+    global label BallSpeedLabel t:Ball Speed, auto:false, align:middleleft, h:50, w:300, x:(width / 2 - 350), y:(height / 2 - 125), ->
+        bg:[20;20;40], fc:[220;220;220], font:[Impact;25;Regular]
+    main display BallSpeedLabel
+    
+    // BallSpeedTB
+    global textbox BallSpeedTB t:'ball_speed', auto:false, h:50, w:300, x:(width / 2 + 50), y:(height / 2 - 125), ->
+        bg:[220;220;220], fc:[40;40;80], font:[Impact;25;Regular]
+    event BallSpeedTB text SettingsChanged
+    main display BallSpeedTB
+    
+    // CoulumnLabel
+    global label CoulumnLabel t:Coulumns, auto:false, align:middleleft, h:50, w:300, x:(width / 2 - 350), y:(height / 2 - 50), ->
+        bg:[20;20;40], fc:[220;220;220], font:[Impact;25;Regular]
+    main display CoulumnLabel
+    
+    // CoulumnTB
+    global textbox CoulumnTB t:'Coulumn', auto:false, h:50, w:300, x:(width / 2 + 50), y:(height / 2 - 50), ->
+        bg:[220;220;220], fc:[40;40;80], font:[Impact;25;Regular]
+    event CoulumnTB text SettingsChanged
+    main display CoulumnTB
+    
+    // RowLabel
+    //global label RowLabel t:Rows, auto:false, align:middleleft, h:50, w:300, x:(width / 2 - 350), y:(height / 2 + 25), ->
+    //    bg:[20;20;40], fc:[220;220;220], font:[Impact;25;Regular]
+    //main display RowLabel
+    
+    // RowTB
+    //global textbox RowTB t:'Row', auto:false, h:50, w:300, x:(width / 2 + 50), y:(height / 2 + 25), ->
+    //    bg:[220;220;220], fc:[40;40;80], font:[Impact;25;Regular]
+    //event RowTB text SettingsChanged
+    //main display RowTB
+endmethod
+
+method HideSettings
+    destroy Panel
+    destroy SettingsLabel
+    destroy Back
+    destroy PlayerSpeedLabel
+    destroy PlayerSpeedTB
+    destroy BallSpeedLabel
+    destroy BallSpeedTB
+    destroy CoulumnLabel
+    destroy CoulumnTB
+    //destroy RowLabel
+    //destroy RowTB
+endmethod
+
+method SettingsChanged
+    var newpspeed PlayerSpeedTB:text
+    var newbspeed BallSpeedTB:text
+    var newcol CoulumnTB:text
+    //var newrow RowTB:text
+    var pisnumber system:isnumber:'newpspeed'
+    var nisnumber system:isnumber:'newbspeed'
+    var cisnumber system:isnumber:'newcol'
+    //var risnumber system:isnumber:'newrow'
+    
+    if ! pisnumber : messagebox Error Player\_Speed\_Needs\_to\_be\_a\_Number
+    else : {
+        player_speed = newpspeed
+        file write 'newpspeed' ~/Save/PlayerSpeed.txt
+    }
+    if ! nisnumber : messagebox Error Ball\_Speed\_Needs\_to\_be\_a\_Number
+    else : {
+        ball_speed = newbspeed
+        file write 'newbspeed' ~/Save/BallSpeed.txt
+    }
+    if ! cisnumber : messagebox Error Coulumns\_Needs\_to\_be\_a\_Number
+    else : {
+        Coulumn = newcol
+        file write 'newcol' ~/Save/Coulumns.txt
+    }
+    //if ! risnumber : messagebox Error Rows\_Needs\_to\_be\_a\_Number
+    //else : {
+    //    Row = newrow
+    //    file write 'newrow' ~/Save/Rows.txt
+    //}
+endmethod
+
+method GetSettings
+    var pspeed : file read ~/Save/PlayerSpeed.txt
+    var bspeed : file read ~/Save/BallSpeed.txt
+    var col : file read ~/Save/Coulumns.txt
+    //var row : file read ~/Save/Rows.txt
+    var pisnumber system:isnumber:'pspeed'
+    var nisnumber system:isnumber:'bspeed'
+    var cisnumber system:isnumber:'col'
+    //var risnumber system:isnumber:'row'
+    
+    if pisnumber : {
+        player_speed = pspeed
+    }
+    if nisnumber : {
+        ball_speed = bspeed
+    }
+    if cisnumber : {
+        Coulumn = col
+    }
+    //if risnumber : {
+    //    Row = row
+    //}
+endmethod

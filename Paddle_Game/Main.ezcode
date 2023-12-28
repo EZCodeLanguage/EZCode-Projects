@@ -1,0 +1,147 @@
+method Main
+    sound BlockHit new ~/Music/block-hit-From-Pixaby.mp3
+    sound PaddleHit new ~/Music/retro-bump-From-Pixaby.mp3
+
+    global var isrunning true
+    global var size_w 200 | var dif_w (size_w / 2)
+    global var size_h 30
+    
+    global var pos_x (width / 2 - dif_w)
+    global var pos_y (height - 100)
+    var _rando system:random:-50:50
+    global var ball_r 50 | var ball_dif (ball_r / 2)
+    global var ball_x (width / 2 - ball_dif + _rando)
+    global var ball_y (pos_y - size_h - ball_r)
+    var bally_look (height / 1.7)
+    
+    global shape player x:pos_x, y:pos_y, w:size_w, h:size_h, bg:[75;75;250]
+    global shape ball x:ball_x, y:ball_y, poly:20, bg:[255;255;255]
+
+    main display player
+    main display ball
+
+    var rand_dir system:random:0:10
+    if rand_dir > 5 : rand_dir = -1
+    else : rand_dir = 1
+    global var dir_x rand_dir
+    global var dir_y 1
+
+    global group blocks new
+    CreateBlocks : Row, Coulumn
+    blocks change 0 bg:[25;75;25]
+    bringto front ball
+    bringto back player
+    await 500
+    var tick 10
+
+    loop isrunning {
+        await tick
+        
+        // player movement
+        var movement 0
+        var left : input key left | if ! left : | left : input key a
+        var right : input key right | if ! right : | right : input key d
+        if left & ! right : movement = -1
+        if ! left & right : movement = 1
+        if pos_x < -10 : pos_x = 0
+        var left_collision (width - size_w - 10)
+        if pos_x > left_collision : pos_x = (width - size_w)
+        pos_x + (movement * player_speed)
+        player x:pos_x
+        
+        // ball movement
+        var left_ball_col (width - ball_r - 10)
+        
+        if ball_x < -10 : dir_x = (- dir_x)
+        if ball_x > left_ball_col : dir_x = -1
+        if ball_y < -10 : dir_y = (- dir_y)
+        if ball_y > height : {
+            isrunning = false
+            player bg:[60;50;50]
+            End : 0
+        }
+        var bpcol : intersects ball player
+        if bpcol : {
+            sound PaddleHit stop
+            sound PaddleHit play
+            if movement = 0 : movement = dir_x
+            dir_y = -1
+            dir_x = movement
+            
+            //var ymov -1
+            //var valrand system:random:2:5
+            //if valrand = 2 : { | // ymov = -2 | // if movement <= -1 : movement = -1 | //  else : movement = 1 | // }
+            //if valrand = 3 : { | // ymov = -1.5 | // if movement <= -1 : movement = -1.5 | // else : movement = 1.5 | // }
+            //if valrand < 3 : { | // ymov = -1 | // if movement <= -1 : movement = -2 | //  else : movement = 2 | // }
+        }
+        ball_x + (dir_x * ball_speed)
+        ball_y + (dir_y * ball_speed)
+        ball x:ball_x, y:ball_y
+        
+        //ball collision
+        if ball_y < bally_look : {
+            group destroys new
+            tick = 3
+            var i 0
+            loop blocks:length {
+                shape ins
+                ins = blocks:i # suppress error
+                var blockinter : intersects ins ball
+                if blockinter : {
+                    sound BlockHit stop
+                    sound BlockHit play
+                    destroys add : blocks:i
+                    blocks remove blocks:i
+                    var _x ins:x
+                    var _y ins:y
+                    var _w ins:w
+                    var _h ins:h
+                    Collision : _x, _y, _w, _h
+                }
+                destroy ins
+                i + 1
+            }
+            destroys destroyall
+        }
+        else : tick = 10
+        
+        //winning
+        var blockslef blocks:length 
+        if blockslef = 0 : {
+            isrunning = false
+            player bg:[60;50;50]
+            End : 1
+        }
+
+        var escape : input key escape
+        var shift : input key shiftkey
+        if escape : {
+        if shift : stop all
+            Clear_Game
+            isrunning = false
+            stop restart
+        }
+    }
+endmethod
+
+method Clear_Game
+    destroy player # suppress error
+    destroy ball # suppress error
+    blocks destroyall # suppress error
+endmethod
+
+method Collision : bx:0, by:0, bw:0, bh:0
+    var pad 5
+    var ball_end_x (ball_x + ball_r - pad)
+    var ball_end_y (ball_y + ball_r - pad)
+    var block_end_x (bx + bw - pad)
+    var block_end_y (by + bh - pad)
+    //var posx dir_x | // if dir_x <= -1 : posx = (- dir_x)
+    //var negx dir_x | // if dir_x >= 1 : negx = (- dir_x)
+    //var posy dir_y | // if dir_y <= -1 : posy = (- dir_y)
+    //var negy dir_y | // if dir_y >= 1 : negy = (- dir_y)
+    if ball_y > block_end_y : dir_y = 1
+    if ball_end_y < by : dir_y = -1
+    if ball_x > block_end_x : dir_x = 1
+    if ball_end_x < bx : dir_x = -1
+endmethod

@@ -1,3 +1,0 @@
-var Random_List Random 0 17
-var word FromList Text Random_List
-write GitHub word

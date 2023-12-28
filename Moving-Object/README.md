@@ -1,2 +1,0 @@
-# Moving an Object With Key Input
-Whenever the root.ezcode file is opened, it plays a program that moves a circle around with WASD key input. The file is very easy to change if wanted, speed and constraints can be changed or applied.

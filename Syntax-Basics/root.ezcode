@@ -1,7 +1,0 @@
-playFile await ~/Controls/Textboxes.ezcode
-playFile await ~/Controls/Buttons.ezcode
-playFile await ~/Controls/Labels.ezcode
-playFile await ~/Controls/Objects.ezcode
-playFile now ~/Data/Variables.ezcode
-playFile now ~/Data/Groups.ezcode
-playFile now ~/Data/Lists.ezcode

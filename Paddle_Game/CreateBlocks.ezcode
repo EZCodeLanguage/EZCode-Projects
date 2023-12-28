@@ -1,0 +1,72 @@
+method CreateBlocks : rows:4, coulumns:8
+    var padding 20
+    var coulumnEven (coulumns - 1)
+    var block_h 100
+    var block_dis_h (block_h + padding)
+    var wbefore (width / coulumns)
+    var block_w (wbefore - padding)
+    var halfpad (padding / 2)
+    
+    list bx new
+    list by new
+    list bw new
+    list bh new
+    
+    var i 0
+    loop rows {
+        i + 1
+        var ybefore (i * block_dis_h + padding)
+        var block_y (ybefore + padding - block_h)
+
+        var even i
+        IsEven : even
+        if even : {
+            var j 0
+            loop coulumns {
+                j + 1
+                var xbefore (width / coulumns)
+                var colxbef (xbefore * j)
+                var block_x (colxbef - block_w - halfpad)
+                bx add 'block_x'
+                by add 'block_y'
+                bw add 'block_w'
+                bh add 'block_h'
+            }
+        }
+        else : {
+            var j 0
+            loop coulumnEven {
+                j + 1
+                var xbefore (width / coulumns)
+                var colxbef (xbefore * j)
+                var blockoffset (block_w / 2)
+                var block_x (colxbef - block_w - halfpad + blockoffset)
+                bx add 'block_x'
+                by add 'block_y'
+                bw add 'block_w'
+                bh add 'block_h'
+            }
+        }
+    }
+    i = 0
+    loop bx:length {
+        var blx bx:i
+        var bly by:i
+        var blw bw:i
+        var blh bh:i
+        
+        instance shape name:b'i', x:blx, y:bly, w:blw, h:blh
+        main display b'i'
+        blocks add : b'i'
+        
+        i + 1
+    }
+endmethod
+
+method IsEven : num:1
+{
+    var a (num / 2)
+    var b (a * 2)
+    num =  (num - b)
+}
+endmethod
