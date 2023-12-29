@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Paddle_Game")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17978801ff371eb16393f0d822198c407301c01c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Paddle_Game")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Paddle_Game")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
