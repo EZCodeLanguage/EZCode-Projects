@@ -672,11 +672,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jlham\\OneDrive\\Documents\\ezcodeTesting\\Paddle_Game\\Sln\\EZCode-WinForms\\EZPlayer-WinForms.csproj",
-      "projectName": "EZPlayer-WinForms",
-      "projectPath": "C:\\Users\\jlham\\OneDrive\\Documents\\ezcodeTesting\\Paddle_Game\\Sln\\EZCode-WinForms\\EZPlayer-WinForms.csproj",
+      "projectUniqueName": "C:\\Users\\jlham\\OneDrive\\Documents\\GitHub\\EZCode-Projects\\Paddle_Game\\Sln\\EZCode-WinForms\\Paddle_Game.csproj",
+      "projectName": "Paddle_Game",
+      "projectPath": "C:\\Users\\jlham\\OneDrive\\Documents\\GitHub\\EZCode-Projects\\Paddle_Game\\Sln\\EZCode-WinForms\\Paddle_Game.csproj",
       "packagesPath": "C:\\Users\\jlham\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jlham\\OneDrive\\Documents\\ezcodeTesting\\Paddle_Game\\Sln\\EZCode-WinForms\\obj\\",
+      "outputPath": "C:\\Users\\jlham\\OneDrive\\Documents\\GitHub\\EZCode-Projects\\Paddle_Game\\Sln\\EZCode-WinForms\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

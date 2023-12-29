@@ -116,7 +116,7 @@ method Main
         var escape : input key escape
         var shift : input key shiftkey
         if escape : {
-        if shift : stop all
+            if shift : stop all
             Clear_Game
             isrunning = false
             stop restart

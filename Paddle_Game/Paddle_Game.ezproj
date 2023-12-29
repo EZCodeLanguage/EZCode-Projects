@@ -2,5 +2,5 @@ name:"Paddle Game"
 startup:"~/Title.ezcode"
 include:"all"
 window:"true"
-icon:"C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Images\icon.ico"
+icon:"C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Images\icon.ico"
 debug:"false" // change when developing in vscode

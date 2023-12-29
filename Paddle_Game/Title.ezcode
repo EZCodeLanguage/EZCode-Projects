@@ -11,6 +11,8 @@ method Entry
 
     global var width main:width
     global var height main:height
+    sound BGMusic new ~/Music/8bit-music-From-Pixaby.mp3
+    sound BGMusic playloop
     
     Title
 endmethod
@@ -27,7 +29,7 @@ method Title
     var aboutLabelText Paddle Game is a rendition of the original Atari Game\c Breakout\c now made with EZCode. Using EZCode\c ->
     this game comes to life in a new way and shows off some of the capabilities of EZCode. Use the Left ->
         and Right arrow keys\c or A and D\c to move. Press Esc to exit. You win once you have destroyed all of ->
-        the blocks. Good luck\e\nCreated by JBros Development
+        the blocks. Good luck\e\nCreated by JBros Development\c SFX and Music from pixaby.com
     var apx (width / 2 - 400)
     var apy (height / 2 - 200)
     global label AboutLabel text:'aboutLabelText', align:topcenter, bg:[60;50;50], fc:[220;220;220], font:[Impact;20;Regular], ->
@@ -72,6 +74,7 @@ method Title
 endmethod
 
 method Play
+    sound stopall
     destroy Start
     destroy Settings
     destroy TitleLabel
@@ -110,9 +113,11 @@ method End : done:true
 endmethod
 
 method Restart
+    sound stopall
     stop restart
 endmethod
 
 method Quit
+    sound stopall
     stop all
 endmethod

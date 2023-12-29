@@ -14,3 +14,15 @@ C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Sln\EZCode-WinForms\
 C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.pdb
 C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.genruntimeconfig.cache
 C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\ref\EZPlayer-WinForms.dll
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.csproj.AssemblyReference.cache
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.AssemblyInfoInputs.cache
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.AssemblyInfo.cs
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.csproj.CoreCompileInputs.cache
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.sourcelink.json
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.csproj.CopyComplete
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.dll
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\refint\EZPlayer-WinForms.dll
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.pdb
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\EZPlayer-WinForms.genruntimeconfig.cache
+C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\obj\Debug\net7.0-windows\ref\EZPlayer-WinForms.dll

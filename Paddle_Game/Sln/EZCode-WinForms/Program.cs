@@ -6,10 +6,10 @@ namespace Paddle_Game {
         [STAThread] static void Main() {
             ApplicationConfiguration.Initialize();
             EzCode ez = new EzCode();
-            string code = @"#current file C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Title.ezcode
+            string code = @"#current file C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Title.ezcode
 
 //Project Properties
-#project properties : name:Paddle Game, icon:C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Images\icon.ico, fileinerror:False, showbuild:False, window:True, isvisual:False, clearconsole:True, debug:False, closeonend:True
+#project properties : name:Paddle Game, icon:C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Images\icon.ico, fileinerror:False, showbuild:False, window:True, isvisual:False, clearconsole:True, debug:False, closeonend:True
 
 //Title.ezcode
 method Entry 
@@ -25,6 +25,8 @@ method Entry
 
     global var width main:width
     global var height main:height
+    sound BGMusic new ~/Music/8bit-music-From-Pixaby.mp3
+    sound BGMusic playloop
     
     Title
 endmethod
@@ -41,7 +43,7 @@ method Title
     var aboutLabelText Paddle Game is a rendition of the original Atari Game\c Breakout\c now made with EZCode. Using EZCode\c ->
     this game comes to life in a new way and shows off some of the capabilities of EZCode. Use the Left ->
         and Right arrow keys\c or A and D\c to move. Press Esc to exit. You win once you have destroyed all of ->
-        the blocks. Good luck\e\nCreated by JBros Development
+        the blocks. Good luck\e\nCreated by JBros Development\c SFX and Music from pixaby.com
     var apx (width / 2 - 400)
     var apy (height / 2 - 200)
     global label AboutLabel text:'aboutLabelText', align:topcenter, bg:[60;50;50], fc:[220;220;220], font:[Impact;20;Regular], ->
@@ -86,6 +88,7 @@ method Title
 endmethod
 
 method Play
+    sound stopall
     destroy Start
     destroy Settings
     destroy TitleLabel
@@ -124,15 +127,17 @@ method End : done:true
 endmethod
 
 method Restart
+    sound stopall
     stop restart
 endmethod
 
 method Quit
+    sound stopall
     stop all
 endmethod
 
 //CreateBlocks.ezcode
-#current file C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\CreateBlocks.ezcode
+#current file C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\CreateBlocks.ezcode
 method CreateBlocks : rows:4, coulumns:8
     var padding 20
     var coulumnEven (coulumns - 1)
@@ -208,7 +213,7 @@ endmethod
 
 
 //Main.ezcode
-#current file C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Main.ezcode
+#current file C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Main.ezcode
 method Main
     sound BlockHit new ~/Music/block-hit-From-Pixaby.mp3
     sound PaddleHit new ~/Music/retro-bump-From-Pixaby.mp3
@@ -327,7 +332,7 @@ method Main
         var escape : input key escape
         var shift : input key shiftkey
         if escape : {
-        if shift : stop all
+            if shift : stop all
             Clear_Game
             isrunning = false
             stop restart
@@ -358,7 +363,7 @@ method Collision : bx:0, by:0, bw:0, bh:0
 endmethod
 
 //Settings.ezcode
-#current file C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Settings.ezcode
+#current file C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Settings.ezcode
 method ShowSettings
     // Back Panel
     global shape Panel x:(width / 2 - 400), y:(height / 2 - 450), w:800, h:900, bg:[20;20;40]
@@ -371,7 +376,7 @@ method ShowSettings
     
     // Back
     global button Back text:Back, w:500, h:100, x:(width / 2 - 250), y:(height / 2 + 275), bg:[20;50;100], fc:[220;220;220], font:[Impact;25;Bold]
-    event Back click HideSettings
+    event Back click Restart
     main display Back
     
     // PlayerSpeedLabel
@@ -419,20 +424,6 @@ method ShowSettings
     //main display RowTB
 endmethod
 
-method HideSettings
-    destroy Panel
-    destroy SettingsLabel
-    destroy Back
-    destroy PlayerSpeedLabel
-    destroy PlayerSpeedTB
-    destroy BallSpeedLabel
-    destroy BallSpeedTB
-    destroy CoulumnLabel
-    destroy CoulumnTB
-    //destroy RowLabel
-    //destroy RowTB
-endmethod
-
 method SettingsChanged
     var newpspeed PlayerSpeedTB:text
     var newbspeed BallSpeedTB:text
@@ -446,30 +437,30 @@ method SettingsChanged
     if ! pisnumber : messagebox Error Player\_Speed\_Needs\_to\_be\_a\_Number
     else : {
         player_speed = newpspeed
-        file write 'newpspeed' C:/Users/Public/Documents/Paddle_Game/Save/PlayerSpeed.txt
+        file write 'newpspeed' ~/Save/PlayerSpeed.txt
     }
     if ! nisnumber : messagebox Error Ball\_Speed\_Needs\_to\_be\_a\_Number
     else : {
         ball_speed = newbspeed
-        file write 'newbspeed' C:/Users/Public/Documents/Paddle_Game/Save/BallSpeed.txt
+        file write 'newbspeed' ~/Save/BallSpeed.txt
     }
     if ! cisnumber : messagebox Error Coulumns\_Needs\_to\_be\_a\_Number
     else : {
         Coulumn = newcol
-        file write 'newcol' C:/Users/Public/Documents/Paddle_Game/Save/Coulumns.txt
+        file write 'newcol' ~/Save/Coulumns.txt
     }
     //if ! risnumber : messagebox Error Rows\_Needs\_to\_be\_a\_Number
     //else : {
     //    Row = newrow
-    //    file write 'newrow' C:/Users/Public/Documents/Paddle_Game/Save/Rows.txt
+    //    file write 'newrow' ~/Save/Rows.txt
     //}
 endmethod
 
 method GetSettings
-    var pspeed : file read C:/Users/Public/Documents/Paddle_GameSave/PlayerSpeed.txt
-    var bspeed : file read C:/Users/Public/Documents/Paddle_Game/Save/BallSpeed.txt
-    var col : file read C:/Users/Public/Documents/Paddle_Game/Save/Coulumns.txt
-    //var row : file read C:/Users/Public/Documents/Paddle_Game/Save/Rows.txt
+    var pspeed : file read ~/Save/PlayerSpeed.txt
+    var bspeed : file read ~/Save/BallSpeed.txt
+    var col : file read ~/Save/Coulumns.txt
+    //var row : file read ~/Save/Rows.txt
     var pisnumber system:isnumber:'pspeed'
     var nisnumber system:isnumber:'bspeed'
     var cisnumber system:isnumber:'col'
@@ -488,16 +479,6 @@ method GetSettings
     //    Row = row
     //}
 endmethod
-
-//test.ezcode
-#current file C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\test.ezcode
-var i 0
-loop 10 {
-    global instance shape name:shp'i', x:55, bg:[50;50;50]
-    i + 1
-}
-
-shp0 y:50
 ";
             ez.Code = code;
             EZProj proj = new EZProj(ez);

@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Paddle_Game
-build_property.ProjectDir = C:\Users\jlham\OneDrive\Documents\ezcodeTesting\Paddle_Game\Sln\EZCode-WinForms\
+build_property.ProjectDir = C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\Paddle_Game\Sln\EZCode-WinForms\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

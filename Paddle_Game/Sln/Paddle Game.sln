@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EZPlayer-WinForms", "EZCode-WinForms\EZPlayer-WinForms.csproj", "{8BE15D64-F561-4087-AB87-D0230BA54ACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paddle_Game", "EZCode-WinForms\Paddle_Game.csproj", "{8BE15D64-F561-4087-AB87-D0230BA54ACB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

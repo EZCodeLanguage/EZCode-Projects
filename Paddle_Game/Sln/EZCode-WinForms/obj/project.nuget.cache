@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EPU8rYMQaBj9majkwtnm/OyH3UjbgXuXyQGig65mqFvc10HGyte+jw9DcJXQPFX40Xl/YLDPKbhpKlbsdhR8aA==",
+  "dgSpecHash": "10e9kcwpJgTrIdYLfuBRli93xglmIpCObKNL76cbMLAKPbr6iPk/kx0h3msT27nkA2s5gfQlRd+oeStbUE9vdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jlham\\OneDrive\\Documents\\ezcodeTesting\\Paddle_Game\\Sln\\EZCode-WinForms\\EZPlayer-WinForms.csproj",
+  "projectFilePath": "C:\\Users\\jlham\\OneDrive\\Documents\\GitHub\\EZCode-Projects\\Paddle_Game\\Sln\\EZCode-WinForms\\Paddle_Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jlham\\.nuget\\packages\\ezcode\\2.1.2\\ezcode.2.1.2.nupkg.sha512",
     "C:\\Users\\jlham\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
