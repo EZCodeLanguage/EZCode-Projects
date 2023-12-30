@@ -1,0 +1,5 @@
+name:"EZ Art"
+window:"true"
+//icon:"~/Images/Icon.ico"
+include:"all"
+startup:"~/Startup.ezcode"
