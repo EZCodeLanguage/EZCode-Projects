@@ -15,10 +15,51 @@ method Start
     global var panX 0
     global var panY 0
     global var 4art 0
+    global var zoom 0
+    global var openned 1
     
     global shape cursor w:20, h:20, bg:[50;50;50]
     global group all new
+    
     Open
+    
+    if openned : {
+        global var wait 1
+        window hotkeys new : type:fixeddialog, startposition:center, w:400, h:350, bg:[255;255;255], t:HotKeys
+        event hotkeys close hotkeysclose
+        hotkeys open
+        label textt auto:false, width:300, h:350, y:5, x:42, font:[Segoe UI;9.5;Regular], align:topcenter, t:Draw \= Mouse Left Button\nErase \= Mouse Right Button\nClear \= C\nBackground Dark \= K\nBackground Light \= L\nPen Size \= Numpad 1 - 9\nPan Drawing \= Middle Mouse Button\nZoom \= Mouse Wheel\nReset Zoom \= Numpad 0\nFour Pen Mirror \= F\nNormal Pen Setting \= D\nPen Color Red Shades \= R\nPen Color Green Shades \= G\nPen Color Blue Shades \= B\nPen Color White Shades \= W\nPen Color Black Shades \= N\nQuit \= Ctrl + F4
+        hotkeys display textt
+        button OK x:25, w:150, t:Ok, h:25, y:275
+        event OK click okclicked
+        hotkeys display OK
+        button dontsee x:200, w:150, t:Don\"t see again, h:25, y:275
+        event dontsee click dontseeclick
+        hotkeys display dontsee
+        loop wait {
+            await 250
+        }
+    }
+    else : {
+        main open
+        MainLoop
+    }
+endmethod
+
+method hotkeysclose
+    wait = 0
+    main open
+    MainLoop
+endmethod
+
+method dontseeclick
+    openned = 0
+    okclicked
+endmethod
+
+method okclicked
+    hotkeys close
+    wait = 0
     main open
     MainLoop
 endmethod
@@ -33,6 +74,7 @@ method MainLoop
     var b_o 1
     var oldmouse_X 0
     var oldmouse_Y 0
+    var lastzoom 0
     loop running 
     {
         await 10
@@ -56,7 +98,7 @@ method MainLoop
         var n7 : input key NumPad7|if n7 : shpDiameter = 70
         var n8 : input key NumPad8|if n8 : shpDiameter = 80
         var n9 : input key NumPad9|if n9 : shpDiameter = 90
-        var n0 : input key NumPad0|if n0 : shpDiameter = 1
+        var n0 : input key NumPad0|if n0 : {|all change 0 w:(- zoom), h:(- zoom)|zoom = 0|}
         var keyR : input key R
         var keyG : input key G
         var keyB : input key B
@@ -85,6 +127,14 @@ method MainLoop
         mouseY = (_ymouse - _ymain - 31)
         width = main:width
         height = main:height
+        
+        // Zoom
+        lastzoom = zoom
+        var currentzm : input mouse wheel
+        zoom + currentzm
+        if zoom != lastzoom : {
+            all change 0 w:currentzm, h:currentzm
+        }
         
         // Panning
         var middlemouse : input mouse button middle
@@ -120,7 +170,7 @@ method MainLoop
         var click : input mouse button left
         if click : {
             if ! 4art : {
-                instance shape name:shape'index', x:(mouseX - shpDiameter / 2), y:(mouseY - shpDiameter / 2), w:shpDiameter, h:shpDiameter, p:30, bg:[r;g;b]
+                instance shape name:shape'index', x:(mouseX - shpDiameter / 2), y:(mouseY - shpDiameter / 2), w:(shpDiameter + zoom), h:(shpDiameter + zoom), p:30, bg:[r;g;b]
                 all add shape'index'
                 main display shape'index'
             }
@@ -194,6 +244,7 @@ method Save
     file write 'bgdark' ~/Save/bgdark.txt
     file write '4art' ~/Save/4art.txt
     file write 'shpDiameter' ~/Save/shpDiameter.txt
+    file write 'openned' ~/Save/openned.txt
 endmethod
 
 method Open
@@ -201,6 +252,7 @@ method Open
     4art : file read ~/Save/4art.txt # suppress error
     var filediameter : file exists ~/Save/shpDiameter.txt
     if filediameter : shpDiameter : file read ~/Save/shpDiameter.txt # suppress error
+    openned : file read ~/Save/openned.txt # suppress error
 endmethod
 
 method Quit
