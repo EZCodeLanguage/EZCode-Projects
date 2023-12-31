@@ -1,0 +1,279 @@
+using EZCode;
+namespace EZPlayer_WinForms {
+    internal static class Program {
+        [STAThread] static void Main() {
+            ApplicationConfiguration.Initialize();
+            EzCode ez = new EzCode();
+            string code = @"#current file C:\Users\jlham\OneDrive\Documents\GitHub\EZCode-Projects\EZ_Art\Startup.ezcode
+
+//Project Properties
+#project properties : name:EZ Art, icon:C:\ProgramData\EZCode\EZCode\EZCode_Logo.ico, fileinerror:True, showbuild:False, window:True, isvisual:False, clearconsole:True, debug:False, closeonend:True
+
+//Startup.ezcode
+method Start
+    window main new : text:Easyk Art, icon:~/Images/Icon.ico, bg:[240;240;240], state:maximized
+    event main close Quit
+    global var running true
+    global var width main:width
+    global var height main:height
+    global var mouseX 0
+    global var mouseY 0
+    global var shpDiameter 30
+    global var r 0
+    global var g 0
+    global var b 0
+    global var bgdark 0
+    global var panning 0
+    global var panX 0
+    global var panY 0
+    global var 4art 0
+    global var zoom 0
+    global var openned 1
+    
+    global shape cursor w:20, h:20, bg:[50;50;50]
+    global group all new
+    
+    Open
+    
+    if openned : {
+        global var wait 1
+        window hotkeys new : type:fixeddialog, startposition:center, w:400, h:350, bg:[255;255;255], t:HotKeys
+        event hotkeys close hotkeysclose
+        hotkeys open
+        label textt auto:false, width:300, h:350, y:5, x:42, font:[Segoe UI;9.5;Regular], align:topcenter, t:Draw \= Mouse Left Button\nErase \= Mouse Right Button\nClear \= C\nBackground Dark \= K\nBackground Light \= L\nPen Size \= Numpad 1 - 9\nPan Drawing \= Middle Mouse Button\nZoom \= Mouse Wheel\nReset Zoom \= Numpad 0\nFour Pen Mirror \= F\nNormal Pen Setting \= D\nPen Color Red Shades \= R\nPen Color Green Shades \= G\nPen Color Blue Shades \= B\nPen Color White Shades \= W\nPen Color Black Shades \= N\nQuit \= Ctrl + F4
+        hotkeys display textt
+        button OK x:25, w:150, t:Ok, h:25, y:275
+        event OK click okclicked
+        hotkeys display OK
+        button dontsee x:200, w:150, t:Don\""t see again, h:25, y:275
+        event dontsee click dontseeclick
+        hotkeys display dontsee
+        loop wait {
+            await 250
+        }
+    }
+    else : {
+        main open
+        MainLoop
+    }
+endmethod
+
+method hotkeysclose
+    wait = 0
+    main open
+    MainLoop
+endmethod
+
+method dontseeclick
+    openned = 0
+    okclicked
+endmethod
+
+method okclicked
+    hotkeys close
+    wait = 0
+    main open
+    MainLoop
+endmethod
+
+method MainLoop
+    global var index 0
+    var r_up 1
+    var g_up 1
+    var b_up 1
+    var r_o 1
+    var g_o 1
+    var b_o 1
+    var oldmouse_X 0
+    var oldmouse_Y 0
+    var lastzoom 0
+    loop running 
+    {
+        await 10
+        index + 1
+        
+        // BG
+        if bgdark : |main change : bg:[40;40;40]
+        else : |main change : bg:[240;240;240]
+        
+        // HotKeys
+        var keyK : input key k
+        var keyL : input key l
+        if keyK : bgdark = 1
+        if keyL : bgdark = 0
+        var n1 : input key NumPad1|if n1 : shpDiameter = 10
+        var n2 : input key NumPad2|if n2 : shpDiameter = 20
+        var n3 : input key NumPad3|if n3 : shpDiameter = 30
+        var n4 : input key NumPad4|if n4 : shpDiameter = 40
+        var n5 : input key NumPad5|if n5 : shpDiameter = 50
+        var n6 : input key NumPad6|if n6 : shpDiameter = 60
+        var n7 : input key NumPad7|if n7 : shpDiameter = 70
+        var n8 : input key NumPad8|if n8 : shpDiameter = 80
+        var n9 : input key NumPad9|if n9 : shpDiameter = 90
+        var n0 : input key NumPad0|if n0 : {|all change 0 w:(- zoom), h:(- zoom)|zoom = 0|}
+        var keyR : input key R
+        var keyG : input key G
+        var keyB : input key B
+        var keyM : input key M
+        var keyN : input key N
+        var keyW : input key W
+        if keyR : {|r = 255|g = 0|b = 0|r_o = 1|g_o = 0|b_o = 0|}
+        if keyG : {|r = 0|g = 255|b = 0|r_o = 0|g_o = 1|b_o = 0|}
+        if keyB : {|r = 0|g = 0|b = 255|r_o = 0|g_o = 0|b_o = 1|}
+        if keyM : {|r = 0|g = 0|b = 0||r_o = 1|g_o = 1|b_o = 1|}
+        if keyN : {|r = 0|g = 0|b = 0||r_o = 0|g_o = 0|b_o = 0|}
+        if keyW : {|r = 255|g = 255|b = 255||r_o = 0|g_o = 0|b_o = 0|}
+        var keyF : input key F
+        if keyF : 4art = 1
+        var keyD : input key D
+        if keyD : 4art = 0
+        
+        // Set Variables
+        oldmouse_X = mouseX
+        oldmouse_Y = mouseY
+        var _xmouse : input mouse position x
+        var _ymouse : input mouse position y
+        var _xmain main:x
+        var _ymain main:y
+        mouseX = (_xmouse - _xmain - 8)
+        mouseY = (_ymouse - _ymain - 31)
+        width = main:width
+        height = main:height
+        
+        // Zoom
+        lastzoom = zoom
+        var currentzm : input mouse wheel
+        zoom + currentzm
+        if zoom != lastzoom : {
+            all change 0 w:currentzm, h:currentzm
+        }
+        
+        // Panning
+        var middlemouse : input mouse button middle
+        if middlemouse : panning = 1
+        else : panning = 0
+        if panning : {
+            panX = (mouseX - oldmouse_X)
+            panY = (mouseY - oldmouse_Y)
+            
+            all change 0 x:panX, y:panY
+        }
+        else : {
+            panX = 0
+            panY = 0
+        }
+        
+        // Delete Shape
+        cursor x:mouseX, y:mouseY
+        var rightc : input mouse button right
+        if rightc : {
+            group destroys new
+            var _i_ 0
+            loop all:length {
+                shape ins_| ins_ = all:_i_
+                var cursorInter : intersects cursor ins_
+                if cursorInter : destroys add all:_i_
+                _i_ + 1
+            }
+            destroys destroyall
+        }
+        
+        // Draw Shape
+        var click : input mouse button left
+        if click : {
+            if ! 4art : {
+                instance shape name:shape'index', x:(mouseX - shpDiameter / 2), y:(mouseY - shpDiameter / 2), w:(shpDiameter + zoom), h:(shpDiameter + zoom), p:30, bg:[r;g;b]
+                all add shape'index'
+                main display shape'index'
+            }
+            else : {
+                var _nrmX (mouseX - shpDiameter / 2)
+                var _nrmY (mouseY - shpDiameter / 2)
+                var invX (width - mouseX)
+                var invY (height - mouseY)
+                instance shape name:shapea'index', x:_nrmX, y:_nrmY, w:shpDiameter, h:shpDiameter, p:30, bg:[r;g;b]
+                instance shape name:shapeb'index', x:invX, y:invY, w:shpDiameter, h:shpDiameter, p:30, bg:[r;g;b]
+                instance shape name:shapec'index', x:invX, y:_nrmY, w:shpDiameter, h:shpDiameter, p:30, bg:[r;g;b]
+                instance shape name:shaped'index', x:_nrmX, y:invY, w:shpDiameter, h:shpDiameter, p:30, bg:[r;g;b]
+                all add : shapea'index', shapeb'index', shapec'index', shaped'index'
+                main display shapea'index'
+                main display shapeb'index'
+                main display shapec'index'
+                main display shaped'index'
+            }
+            
+            if r_up & r_o : r + system:random:0:15
+            if ! r_up & r_o : r - system:random:0:15
+            if g_up & g_o : g + system:random:0:15
+            if ! g_up & g_o : g - system:random:0:15
+            if b_up & b_o : b + system:random:0:15
+            if ! b_up & b_o : b - system:random:0:15
+            if r >= 245 : {
+                r = 255
+                r_up = 0
+            }
+            if r <= 5 : {
+                r = 0
+                r_up = 1
+            }
+            if g >= 245 : {
+                g = 255
+                g_up = 0
+            }
+            if g <= 5 : {
+                g = 0
+                g_up = 1
+            }
+            if b >= 245 : {
+                b = 255
+                b_up = 0
+            }
+            if b <= 5 : {
+                b = 0
+                b_up = 1
+            }
+        }
+        
+        // Clear Shapes
+        var clearshp : input key c
+        if clearshp : 
+        { 
+            all destroyall
+            global group all new
+        }
+        
+        // Check Quit
+        var Control : input key controlkey
+        var F4 : input key F4
+        if Control and F4 : running = false
+    }
+    Save
+    await 5
+    stop all
+endmethod
+
+method Save
+    file write 'bgdark' ~/Save/bgdark.txt
+    file write '4art' ~/Save/4art.txt
+    file write 'shpDiameter' ~/Save/shpDiameter.txt
+    file write 'openned' ~/Save/openned.txt
+endmethod
+
+method Open
+    bgdark : file read ~/Save/bgdark.txt # suppress error
+    4art : file read ~/Save/4art.txt # suppress error
+    var filediameter : file exists ~/Save/shpDiameter.txt
+    if filediameter : shpDiameter : file read ~/Save/shpDiameter.txt # suppress error
+    openned : file read ~/Save/openned.txt # suppress error
+endmethod
+
+method Quit
+    running = false
+endmethod
+";
+            ez.Code = code;
+            EZProj proj = new EZProj(ez);
+            Application.Run(new EZCode.EZPlayer.Player(proj));
+        }
+    }
+}
