@@ -1,4 +1,14 @@
-# project properties : isvisual:true, name:Visual Project
+# project properties : isvisual:true, name:Time Game, fileinerror:false
+
+file read ~/best.txt => best
+
+print Use AWSD to move. Press Space when your ready. Best is 'best'
+
+var wait 0
+loop ?(! wait)? {
+    var wait : input key space
+    await 100
+}
 
 var moveX 200
 var x 0
@@ -8,10 +18,26 @@ shape End bg:[255;255;0], x:500, h:300, w:150
 label endlab x:550, y:140, t:End, font:[Consolas; 15;Regular], bg:[255;255;0]
 bringto front endlab
 
-print Use AWSD to move
-
+var start system:time:second
+if start = 0 : {
+    await 1000
+    start = 1
+}
 var end 0
+var specific 1
 loop ?(! end)? {
+    clear
+    var current system:time:second
+    if current = 0 & specific : {
+        start - 60
+        specific = 0
+    }
+    if current = 2 : specific = 1
+    var mili system:time:milisecond
+    var time (current - start)
+    time = 'time'.'mili'
+    print 'time'
+
     await 50
     var left : input key a
     var right : input key d
@@ -33,7 +59,12 @@ loop ?(! end)? {
     var interEnd : intersects Move End
     if interEnd : end = 1
 }
+clear
+print You Completed it! You got 'time'
 
-print You Won!
+if 'time' < 'best' : file write 'time' ~/best.txt
 
-await 2500
+await 2000
+
+clear
+stop restart
