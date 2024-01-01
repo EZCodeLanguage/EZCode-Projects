@@ -1,0 +1,42 @@
+print Grade Calculator. Input all grades one by one throught the console input. When all are inputted, input any text.
+
+list grades new
+var isinput true
+loop isinput 
+{
+    var console : input console
+    var inputisnumber system:isnumber:console
+    if inputisnumber : {
+        print 'console'
+        grades add 'console'
+    }
+    else : isinput = false
+}
+var add 0
+var i 0
+loop grades:length
+{
+    add + grades:i
+    i + 1
+}
+var bottom grades:length
+var result (add / bottom)
+var letter
+
+if result > 90 : letter = A
+if result < 90 & result >= 80 : letter = B
+if result < 80 & result >= 70 : letter = C
+if result < 70 & result >= 60 : letter = D
+if result < 60 : letter = F
+
+clear
+
+if result = 0 : print Your score for this grade is a 0. So basically, uh- you did not pass this- uh- in other words you, you, you... FAILED.
+else : | print Your Final Grade is a 'result' 'letter'
+
+print press space bar to close.
+loop true {
+    await 75
+    var close : input key space
+    if close : stop all
+}
