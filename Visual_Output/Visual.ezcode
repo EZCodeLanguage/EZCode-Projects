@@ -1,0 +1,39 @@
+# project properties : isvisual:true, name:Visual Project
+
+var moveX 200
+var x 0
+var y 0
+
+shape End bg:[255;255;0], x:500, h:300, w:150
+label endlab x:550, y:140, t:End, font:[Consolas; 15;Regular], bg:[255;255;0]
+bringto front endlab
+
+print Use AWSD to move
+
+var end 0
+loop ?(! end)? {
+    await 50
+    var left : input key a
+    var right : input key d
+    var up : input key w
+    var down : input key s
+    if left : x + -8
+    if right : x + 8
+    if up : y + -8
+    if down : y + 8
+    
+    shape Move image:~/ShapeImage.png, p:5, w:150, h:150, imagelayout:stretch, x:moveX, y:100
+    shape Controller bg:[255;20;20], w:75, h:75, x:x, y:y
+    bringto front Move
+    bringto front Controller
+
+    var interMove : intersects Controller Move
+    if interMove : moveX + 5
+
+    var interEnd : intersects Move End
+    if interEnd : end = 1
+}
+
+print You Won!
+
+await 2500
