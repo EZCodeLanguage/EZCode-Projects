@@ -1,0 +1,33 @@
+# project properties : isvisual:true, name:Movement With Bounds
+
+var isRunning true
+shape Player bg:[255;0;0]
+
+var Bounds_X_End 250
+var Bounds_Y_End 250
+var Bounds_X_Start 0
+var Bounds_Y_Start 0
+var Speed 4
+var X 0
+var Y 0
+
+loop isRunning {
+    await 10
+    // Movement
+    var Left : input key Left
+    var Right : input key Right
+    var Up : input key Up
+    var Down : input key Down
+    if Left : X - Speed
+    if Right : X + Speed
+    if Up : Y - Speed
+    if Down : Y + Speed
+    // Check Quit
+    var quit : input key Escape
+    if 'quit' : isRunning = false
+    // Bounds
+    math clamp(X,Bounds_X_Start,Bounds_X_End) : X
+    math clamp(Y,Bounds_Y_Start,Bounds_Y_End) : Y
+    // Set Player Position
+    Player x:X, y:Y
+}

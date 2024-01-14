@@ -1,0 +1,46 @@
+# project properties : isvisual:true, name:Movement With Collisions
+
+var isRunning true
+shape Player bg:[255;0;0]
+shape Collision bg:[0;0;255], x:150, y:150
+
+var Speed 4
+var X 0
+var Y 0
+var Hit false
+
+loop isRunning {
+    await 10
+    // Movement
+    var Left : input key Left
+    var Right : input key Right
+    var Up : input key Up
+    var Down : input key Down
+    if Left : X - Speed
+    if Right : X + Speed
+    if Up : Y - Speed
+    if Down : Y + Speed
+    // Check Quit
+    var quit : input key Escape
+    if 'quit' : isRunning = false
+    // Collisions
+    var Inter : intersects Player Collision
+    if Inter : {
+        var colX Collision:X | var colY Collision:Y | var colW Collision:W | var colH Collision:H
+        var playW Player:W | var playH Player:H
+        var pad 8
+        var Player_X_End : math playW + X - pad
+        var Player_Y_End : math playH + Y - pad
+        var Collision_X_End : math colX + colW - pad
+        var Collision_Y_End : math colY + colH - pad
+        var handled 0
+        
+        if ! handled & X >= Collision_X_End : { | X + Speed | handled = 1 | }
+        if ! handled & Y >= Collision_Y_End : { | Y + Speed | handled = 1 | }
+        if ! handled & Player_X_End <= colX : { | X - Speed | handled = 1 | }
+        if ! handled & Player_Y_End <= colY : { | Y - Speed | handled = 1 | }
+        Hit = true
+    }
+    // Set Player Position
+    if ! Hit : Player x:X, y:Y
+}
