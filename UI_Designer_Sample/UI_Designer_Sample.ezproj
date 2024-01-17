@@ -1,0 +1,5 @@
+name:"UI_Designer_Sample"
+window:"True"
+icon:"~\Images\Icon.ico"
+startup:"~\Main.ezcode"
+include:"all"

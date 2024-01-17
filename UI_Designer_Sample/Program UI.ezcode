@@ -1,0 +1,55 @@
+method Program_UI_Window
+    // Window PROGRAM_UI
+    window PROGRAM_UI new : text:Program UI Sample, width:1645, height:864, minwidth:1000, minheight:700, icon:~/Images/Icon.ico, state:maximized, startposition:defaultbounds
+    
+    // Control Taskbar
+    shape Taskbar width:5000, height:40, bg:[211;211;211], font:[Segoe UI Historic;12;Regular]
+    PROGRAM_UI display Taskbar
+
+    // Control Convert
+    button Convert text:Convert, x:5, y:5, width:100, height:30, bg:[255;255;255], auto:True, auto:True, font:[Segoe UI Historic;11;Regular]
+    PROGRAM_UI display Convert
+
+    // Control Clear
+    button Clear text:Clear, x:125, y:5, width:100, height:30, auto:True, auto:True, font:[Segoe UI Historic;11;Regular]
+    PROGRAM_UI display Clear
+
+    // Control Help
+    button Help text:Help, x:245, y:5, width:100, height:30, auto:True, auto:True, font:[Segoe UI Historic;11;Regular]
+    PROGRAM_UI display Help
+
+    // Control InputTB
+    textbox InputTB y:40, width:1645, height:425, fg:[0;0;0], auto:True, auto:True, font:[Segoe UI Historic;11;Regular], wordwrap:False, multiline:True, verticalscrollbar:true, horizantalscrollbar:true
+    PROGRAM_UI display InputTB
+
+    // Control LabelConvert
+    label LabelConvert text:Converted Input, x:1, y:475, width:115, height:20, bg:[240;240;240], fg:[0;0;0], font:[Segoe UI Historic;11;Regular]
+    PROGRAM_UI display LabelConvert
+
+    // Control OutputTB
+    textbox OutputTB y:500, width:1645, height:363, bg:[245;245;245], fg:[0;0;0], font:[Segoe UI Historic;11;Regular], readonly:True, wordwrap:False, multiline:True, verticalscrollbar:true, horizantalscrollbar:true
+    PROGRAM_UI display OutputTB
+
+    // Open PROGRAM_UI
+    PROGRAM_UI open
+    
+    var Running true
+    loop Running {
+        var _Width PROGRAM_UI:width
+        var _Height PROGRAM_UI:height
+        InputTB w:_Width
+        var newH (_Height - 500)
+        OutputTB w:_Width, h:newH
+        await 100
+    }
+    PROGRAM_UI destroy
+endmethod
+
+
+
+
+
+
+
+
+

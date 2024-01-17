@@ -1,0 +1,80 @@
+method Start
+    // Window MAIN
+    window MAIN new : text:Sample UI, width:961, height:791, bg:[255;255;255], maximizebox:False, type:fixedsingle, startposition:default, font:[Gill Sans Ultra Bold;14;Regular], icon:~/Images/Icon.ico # suppress error
+    event MAIN close MAIN_Closed
+
+    // Control BG
+    shape BG x:166, y:120, width:669, height:546, bg:[0;128;128], anchor:[Top;Bottom;Left;Right], font:[Segoe UI;9;Regular]
+    MAIN display BG
+
+    // Control Title
+    label Title text:Designer Sample UI, x:167, y:120, width:664, height:167, bg:[0;128;128], anchor:[Top;Left;Right], font:[Gill Sans Ultra Bold;36;Regular], align:middlecenter
+    MAIN display Title
+
+    // Control Loading_Screen
+    button Loading_Screen text:Loading Screen, x:300, y:325, width:400, height:50, anchor:[Top;Left;Right], auto:False, font:[Gill Sans Ultra Bold;14.25;Regular]
+    MAIN display Loading_Screen
+    event Loading_Screen click Loading_Screen_Clicked
+
+    // Control Program_UI
+    button Program_UI text:Program UI, x:300, y:400, width:400, height:50, anchor:[Top;Left;Right], font:[Gill Sans Ultra Bold;14.25;Regular]
+    MAIN display Program_UI
+    event Program_UI click Program_UI_Clicked
+
+    // Control Game_Sample
+    button Game_Sample text:Game Sample, x:300, y:475, width:400, height:50, anchor:[Top;Left;Right], font:[Gill Sans Ultra Bold;14.25;Regular]
+    MAIN display Game_Sample
+    event Game_Sample click Game_Sample_Clicked
+
+    // Control Settings_UI
+    button Settings_UI text:Settings UI, x:300, y:550, width:400, height:50, anchor:[Top;Left;Right], font:[Gill Sans Ultra Bold;14.25;Regular]
+    MAIN display Settings_UI
+    event Settings_UI click Settings_UI_Clicked
+
+    // Open MAIN
+    MAIN open
+    
+    global var IsWaiting 1
+    global var Loading_Is_Open 0
+    global var Program_Is_Open 0
+    global var Game_Is_Open 0
+    global var Settings_Is_Open 0
+    
+    loop IsWaiting {
+        await 100
+    }
+endmethod
+
+method Loading_Screen_Clicked
+    Loading_Is_Open = 1
+    Loading_Screen_Window
+endmethod
+
+method Program_UI_Clicked
+    Program_Is_Open = 1
+    Program_UI_Window
+    PROGRAM_UI destroy
+endmethod
+
+method Game_Sample_Clicked
+    Game_Is_Open = 1
+    Game_Sample_Window
+    Game_Sample destroy
+endmethod
+
+method Settings_UI_Clicked
+    Loading_Is_Open = 1
+    Settings_UI_Window
+    Settings_UI destroy
+endmethod
+
+method MAIN_Closed
+    stop all
+endmethod
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+method Settings_UI_Window
+    // Window SETTINGS_UI
+    window SETTINGS_UI new : width:630, height:605, bg:[70;130;180], maximizebox:False, showicon:False, type:fixedsingle, font:[Malgun Gothic;16;Regular], startposition:center
+
+    // Control SettingsLabel
+    label SettingsLabel text:Settings, width:628, height:96, bg:[70;130;180], font:[Malgun Gothic;24;Regular], align:middlecenter, auto:false
+    SETTINGS_UI display SettingsLabel
+
+    // Control Label1
+    label Label1 text:Settings 1, x:10, y:93, width:300, height:121, bg:[70;130;180], auto:False, auto:False, font:[Malgun Gothic;16;Regular], align:middleleft
+    SETTINGS_UI display Label1
+
+    // Control Set1TB
+    textbox Set1TB t:Value, x:300, y:138, width:291, height:36, fg:[0;0;0], font:[Malgun Gothic;16;Regular], horizantalscrollbar:false
+    SETTINGS_UI display Set1TB
+
+    // Control Label2
+    label Label2 text:Setting 2, x:10, y:214, width:300, height:121, bg:[70;130;180], fg:[0;0;0], auto:False, auto:False, font:[Malgun Gothic;16;Regular], align:middleleft
+    SETTINGS_UI display Label2
+
+    // Control Set2TB
+    textbox Set2TB t:Value, x:300, y:260, width:291, height:36, fg:[0;0;0], font:[Malgun Gothic;16;Regular], horizantalscrollbar:false
+    SETTINGS_UI display Set2TB
+
+    // Control Label3
+    label Label3 text:Setting 3, x:10, y:335, width:300, height:121, bg:[70;130;180], fg:[0;0;0], auto:False, auto:False, font:[Malgun Gothic;16;Regular], align:middleleft
+    SETTINGS_UI display Label3
+
+    // Control Set3TB
+    textbox Set3TB t:Value, x:300, y:381, width:291, height:36, fg:[0;0;0], font:[Malgun Gothic;16;Regular], horizantalscrollbar:false
+    SETTINGS_UI display Set3TB
+
+    // Control Save
+    button Save text:Save, x:125, y:475, width:402, height:48, fg:[0;0;0], auto:False, auto:False, font:[Malgun Gothic;16;Regular]
+    SETTINGS_UI display Save
+
+    // Open SETTINGS_UI
+    SETTINGS_UI open
+    
+    
+    global var __Running true
+    loop __Running {
+        await 200
+    }
+    PROGRAM_UI destroy
+endmethod

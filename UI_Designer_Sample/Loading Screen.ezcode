@@ -1,0 +1,36 @@
+method Loading_Screen_Window
+    // Window LOADING_SCREEN
+    window LOADING_SCREEN new : minimizebox:False, maximizebox:False, showicon:False, showintaskbar:False, type:none, startposition:center
+
+    // Control Load_Background
+    shape Load_Background width:600, height:370, bg:[211;211;211], imagelayout:center, image:~/Images/Icon.png
+    LOADING_SCREEN display Load_Background
+
+    // Control Loading_Running_BG
+    shape Loading_Running_BG y:370, width:600, height:30, bg:[169;169;169]
+    LOADING_SCREEN display Loading_Running_BG
+
+    // Control Loading_Runner
+    shape Loading_Runner y:375, width:1, height:20, bg:[0;255;0]
+    LOADING_SCREEN display Loading_Runner
+    
+    // Open LOADING_SCREEN
+    LOADING_SCREEN open
+
+    var Running true
+    var Width 1
+    loop Running 
+    {
+        var add system:random:0:10
+        Width + add
+        Loading_Runner w:Width
+        await 10
+        
+        if Width > 600 : {
+            Running = false
+        }
+    }
+    await 500
+    
+    LOADING_SCREEN destroy
+endmethod

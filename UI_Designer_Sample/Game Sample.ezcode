@@ -1,0 +1,40 @@
+method Game_Sample_Window
+    // Window GAME_SAMPLE
+    window GAME_SAMPLE new : bg:[105;105;105], type:none, state:maximized
+
+    // Control Player
+    shape Player x:356, y:188, width:60, height:60, bg:[205;92;92], poly:15
+    GAME_SAMPLE display Player
+
+    // Control QuitLabel
+    label QuitLabel text:Press Esc to quit, bg:[105;105;105], fc:[255;255;255]
+    GAME_SAMPLE display QuitLabel
+
+    // Open GAME_SAMPLE
+    GAME_SAMPLE open
+    
+    var isRunning true
+    var Speed 10
+    var X 500
+    var Y 500
+
+    loop isRunning {
+        await 10
+        // Movement
+        var Left : input key Left
+        var Right : input key Right
+        var Up : input key Up
+        var Down : input key Down
+        if Left : X - Speed
+        if Right : X + Speed
+        if Up : Y - Speed
+        if Down : Y + Speed
+        // Check Quit
+        var quit : input key Escape
+        if 'quit' : isRunning = false
+        // Set Player Position
+        Player x:X, y:Y
+    }
+    
+    GAME_SAMPLE destroy
+endmethod
