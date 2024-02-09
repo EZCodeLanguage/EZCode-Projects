@@ -1,0 +1,40 @@
+# project properties : isvisual:true, fileinerror:false, name:Complex Movement
+
+global var isRunning true
+global shape Player bg:[255;0;0]
+
+global var Speed 4
+global var X 0
+global var Y 0
+
+loop isRunning {
+    await 10
+
+    // Input
+    var Left : input key Left | if ! Left : | Left : input key A
+    var Right : input key Right | if ! Right : | Right : input key D
+    var Up : input key Up | if ! Up : | Up : input key W
+    var Down : input key Down | if ! Down : | Down : input key S
+    
+    // Normalize
+    var normalize_speed 3
+    if Left & ! Down & ! Up :  X - Speed
+    if Left & Down & ! Up : X - normalize_speed
+    if Left & ! Down & Up : X - normalize_speed
+    if Right & ! Down & ! Up : X + Speed
+    if Right & Down & ! Up : X + normalize_speed
+    if Right & ! Down & Up : X + normalize_speed
+    if Down & ! Left & ! Right : Y + Speed
+    if Down & Left & ! Right : Y + normalize_speed
+    if Down & ! Left & Right : Y + normalize_speed
+    if Up & ! Left & ! Right : Y - Speed
+    if Up & ! Left & Right : Y - normalize_speed
+    if Up & Left & ! Right : Y - normalize_speed
+    
+    // Set Player Position
+    Player x:X, y:Y
+
+    // Check Quit
+    var quit : input key Escape
+    if 'quit' : isRunning = false
+}
