@@ -1,0 +1,10 @@
+{
+    "$schema":"https://raw.githubusercontent.com/EZCodeLanguage/Projects/main/ezcode.project.schema.json",
+    "Name":"Hello World",
+    "Files": [
+        "entry.ezcode"
+    ],
+    "GlobalPackages":[
+        "main"
+    ]
+}
