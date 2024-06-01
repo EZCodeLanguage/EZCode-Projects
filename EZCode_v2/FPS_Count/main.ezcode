@@ -1,0 +1,67 @@
+method Start
+    window MAIN new : text:FPS Count, width:500, height:500, bg:[128;128;128], type:none, startposition:center
+    event MAIN close Quit
+    global var speed 10
+    global var tick 5
+    global var fps 0
+    global var finished_move true
+    global label esc_to_quit x:415, t:Esc to quit, fg:[255;255;255], bg:[128;128;128], y:3
+    global label fps_label text:FPS: 00, x:3, y:3, bg:[128;128;125], fg:[255;255;255], auto:True
+    
+    global shape player1 x:225, y:225
+    global shape player2 x:-275, y:225
+    global shape player3 x:225, y:-275
+    global shape player4 x:-275, y:-275
+    global shape player5 x:725, y:225
+    global shape player6 x:225, y:725
+    global shape player7 x:725, y:725
+    global shape player8 x:-275, y:725
+    global shape player9 x:725, y:-275
+    global group players new : player1, player2, player3, player4, player5, player6, player7, player8, player9
+    
+    MAIN display players
+    MAIN display esc_to_quit
+    MAIN display fps_label
+    MAIN open
+    
+    var start 0
+    var frames 0
+    var count 1
+    loop true {
+        frames + 1
+        var current system:time:second
+        var elapsed (current - start)
+        if elapsed >= count : {
+            fps : math avg(frames,count)
+            frames = 0
+            start = current
+        }
+        
+        fps_label t:FPS\; 'fps'
+        await tick
+        
+        var escape : input key Escape
+        if escape : stop all
+        
+        var left : input key Left
+        var right : input key Right
+        var up : input key Up
+        var down : input key Down
+        
+        var vel_x : math left + neg(right)
+        var vel_y : math up + neg(down)
+        
+        players change x:(speed * vel_x * -1), y:(speed * vel_y * -1)
+        
+        var _x player1:x
+        var _y player1:y
+        if _x > 500 : players change x:(_x * -1)
+        if _x < -50 : players change x:500
+        if _y > 500 : players change y:(_y * -1)
+        if _y < -50 : players change y:500
+    }
+endmethod
+
+method Quit
+    stop all
+endmethod

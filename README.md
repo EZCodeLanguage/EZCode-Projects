@@ -1,3 +1,3 @@
 # EZCode Projects
 
-This **Repository** is specifically for EZCode projects. The projects made use [EZCode](https://github.com/JBrosDevelopment/EZCode) as the programming language. To learn more, go to the [Official Wiki](https://github.com/JBrosDevelopment/EZCode/wiki) fro EZCode. If you want to contribute, submit a pull request to this repository.
+Some example projects made for the programming language [EZCode](https://github.com/EZCodeLanguage). If you want to contribute, submit a pull request to this repository with your project in a unique folder in the root directory. It must contain a README and `project.json`.

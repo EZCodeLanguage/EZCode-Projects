@@ -1,0 +1,133 @@
+# project properties : name:Graphing, window:True
+
+method start
+    window main new : t:Graphing, w:500, h:500, state:maximized, bg:[255;255;255]
+    event main resizeend GridSize
+    event main close => stop all
+    global var hasstart 0
+    global var grid 3
+    global var space 50
+    global var pad 24
+    global var width 2
+    global var point_width 12
+    global var center : math grid * space + pad
+    global shape PointOnScreen bg:[220;50;50], x:center, y:center, w:point_width, h:point_width, p:8
+    bringto front PointOnScreen
+    textbox position t:0\c\_0, fc:[0;0;0], bg:[255;255;255], w:100
+    button generate t:Generate Graph, fc:[0;0;0], bg:[255;255;255], y:30, w:100
+    main display position
+    main display generate
+    main display PointOnScreen
+    bringto front generate
+    bringto front position
+    event generate click Generate
+    main open
+    GridSize
+    loop true {
+        await 100
+    }
+endmethod
+
+method Generate
+    var _p position:text
+    var isn system:isnumber:_p
+    if ! isn : _p = 0\c\_0
+    list all new | all split '_p' ,
+    var xpos all:0
+    var ypos all:1
+    var x : math xpos * space + center
+    var y : math ypos * space * -1 + center
+    PointOnScreen x:x, y:y
+endmethod
+
+method GridSize
+    var wid main:width | wid - 130
+    var hei main:height | hei - 130
+    var horiz pad
+    var hz 0
+    var vert pad
+    var vt 0
+    loop ?(horiz <= wid)? {
+        horiz + space
+        hz + 1
+    }
+    loop ?(vert <= hei)? {
+        vert + space
+        vt + 1
+    }
+    grid : math min(vt,hz) / 2
+    grid : math round(grid)
+    print 'grid'
+    DestroyLines
+    global group Graph new
+    Graph destroyall
+    center : math grid * space + pad
+    if hasstart : {
+        destroy PointOnScreen
+        destroy position
+        destroy generate
+    }
+    main clear
+    global group Graph new
+    global shape PointOnScreen bg:[220;50;50], x:center, y:center, w:point_width, h:point_width, p:8
+    bringto front PointOnScreen
+    textbox position t:0\c\_0, fc:[0;0;0], bg:[255;255;255], w:100
+    button generate t:Generate Graph, fc:[0;0;0], bg:[255;255;255], y:30, w:100
+    main display position
+    main display generate
+    main display PointOnScreen
+    bringto front generate
+    bringto front position
+    event generate click Generate
+    CreateLines
+    Generate
+    hasstart = 1
+endmethod
+
+method DestroyLines
+    if hasstart : {
+        var index 0
+        loop Graph:length {
+            index + 1
+            destroy lineV'index'
+            destroy lineH'index'
+            destroy labV'index'
+            destroy labH'index'
+        }
+    }
+endmethod
+
+method CreateLines
+    var half_point_width : math point_width / 2
+    var spec : math neg(grid)
+    var index 0
+    // Vertical
+    loop (grid * 2 - 1) {
+        index + 1
+        spec + 1
+        var X : math index * space + half_point_width + pad
+        var H : math grid * space * 2 + pad / 2
+        var labPos1 : math center + 10
+        var labPos2 : math X + 2
+        instance shape name:lineV'index', y:pad, x:X, w:width, h:H, bg:[0;0;0]
+        instance label name:labV'index', fc:[0;0;0], bg:[255;255;255], t:'spec', y:labPos1, x:labPos2
+        bringto front labV'index'
+        Graph add : lineV'index', labV'index'
+    }
+    // Horizantal
+    var index 0
+    var spec : math grid
+    loop (grid * 2 - 1) {
+        index + 1
+        spec - 1
+        var Y : math index * space + half_point_width + pad
+        var W : math grid * space * 2 + pad / 2
+        var labPos1 : math center + 10
+        var labPos2 : math Y + 2
+        instance shape name:lineH'index', x:pad, y:Y, h:width, w:W, bg:[0;0;0]
+        instance label name:labH'index', fc:[0;0;0], bg:[255;255;255], t:'spec', x:labPos1, y:labPos2
+        bringto front labH'index'
+        Graph add : lineH'index', labH'index'
+    }
+    main display Graph
+endmethod

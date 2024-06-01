@@ -1,0 +1,4 @@
+name:"FPS Count"
+window:"True"
+
+startup:"~/main.ezcode"
