@@ -1,3 +1,3 @@
-# Print Hello World Project
+# Hello World
 
 This project is a simple Hello World example
