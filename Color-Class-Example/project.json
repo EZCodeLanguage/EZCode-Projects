@@ -1,6 +1,6 @@
 {
     "$schema":"https://raw.githubusercontent.com/EZCodeLanguage/Projects/main/ezcode.project.schema.json",
-    "Name":"Color Class Example",
+    "Name":"Color-Class-Example",
     "Files": [
         "entry.ezcode"
     ],
